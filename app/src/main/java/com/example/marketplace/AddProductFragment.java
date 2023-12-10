@@ -33,7 +33,6 @@ public class AddProductFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Create an instance of UserDataSource and open the database connection
         productDataSource = new ProductDataSource(requireContext());
         productDataSource.open();
     }
