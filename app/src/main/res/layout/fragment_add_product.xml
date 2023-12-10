@@ -37,13 +37,21 @@
         android:textColor="@color/blue"
         android:layout_centerHorizontal="true"/>
 
-
+    <!-- Spinner for selecting category -->
+    <Spinner
+        android:id="@+id/spinnerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPrice"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:entries="@array/category_array" />
 
     <Button
         android:id="@+id/buttonAddProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPrice"
+        android:layout_below="@id/spinnerCategory"
         android:layout_marginTop="16dp"
         android:background="@color/yellow"
         android:textColor="@color/white"

@@ -4,6 +4,7 @@ public class Product {
     private long id;
     private String name;
     private String imageUrl;
+    private String category;
     private Double price;
     private long marketplaceId;
 
@@ -11,6 +12,14 @@ public class Product {
         this.name = name;
         this.imageUrl = imageUrl;
         this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public long getId() {

@@ -6,6 +6,7 @@ public class ProductContract {
     public static final String COLUMN_ID = "_id"; // Primary key
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_IMAGE_URL = "imageUrl";
+    public static final String COLUMN_CATEGORY = "category";
     public static final String COLUMN_PRICE = "price";
     public static final String COLUMN_MARKETPLACE_ID = "marketplace_id";
 
@@ -14,6 +15,7 @@ public class ProductContract {
                     COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     COLUMN_NAME + " TEXT," +
                     COLUMN_IMAGE_URL + " TEXT," +
+                    COLUMN_CATEGORY + " TEXT," +
                     COLUMN_PRICE + " REAL," +
                     COLUMN_MARKETPLACE_ID + " INTEGER," +
                     "FOREIGN KEY(" + COLUMN_MARKETPLACE_ID + ") REFERENCES " +
