@@ -1,5 +1,7 @@
 package com.example.marketplace;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,8 +51,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.buttonBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle the Buy button click
-                // You can add your logic here
+                Context context = holder.itemView.getContext();
+                Intent intent = new Intent(context, PaymentActivity.class);
+                context.startActivity(intent);
             }
         });
     }
