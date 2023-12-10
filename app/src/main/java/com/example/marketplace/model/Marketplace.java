@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Marketplace {
+    private long id;
     private String name;
     private String imageUrl;
     private List<Product> productList;
@@ -12,6 +13,22 @@ public class Marketplace {
         this.name = name;
         this.imageUrl = imageUrl;
         this.productList = new ArrayList<>();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
     public String getName() {

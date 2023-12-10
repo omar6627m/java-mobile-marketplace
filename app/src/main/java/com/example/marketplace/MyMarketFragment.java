@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.marketplace.model.Marketplace;
+import com.example.marketplace.model.UserSingleton;
 import com.squareup.picasso.Picasso;
 
 
@@ -33,8 +35,13 @@ public class MyMarketFragment extends Fragment {
         textViewTitle = view.findViewById(R.id.textViewTitle);
         imageView = view.findViewById(R.id.imageView);
 
-        loadImageFromUrl();
+        // load initial data
+        Marketplace marketplace = UserSingleton.getInstance().getCurrentUser().getMarketplace();
+        editTextName.setText(marketplace.getName());
+        editTextImageUrl.setText(marketplace.getImageUrl());
 
+
+        loadImageFromUrl();
         Button saveMarketButton = view.findViewById(R.id.buttonSaveMarket);
         saveMarketButton.setOnClickListener(new View.OnClickListener() {
             @Override
