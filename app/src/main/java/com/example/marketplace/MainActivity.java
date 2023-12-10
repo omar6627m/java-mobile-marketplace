@@ -45,10 +45,16 @@ public class MainActivity extends AppCompatActivity
         Menu navMenu = navigationView.getMenu();
         MenuItem loginItem = navMenu.findItem(R.id.nav_login);
         MenuItem logoutItem = navMenu.findItem(R.id.nav_logout);
+        MenuItem myMarketItem = navMenu.findItem(R.id.nav_my_market);
+        MenuItem myProductsItem = navMenu.findItem(R.id.nav_my_products);
+        MenuItem addProductItem = navMenu.findItem(R.id.nav_add_product);
 
         if (UserSingleton.getInstance().isLoggedIn()) {
             loginItem.setVisible(false);
             logoutItem.setVisible(true);
+            myMarketItem.setVisible(true);
+            myProductsItem.setVisible(true);
+            addProductItem.setVisible(true);
             View headerView = navigationView.getHeaderView(0);
             TextView headerTitle = headerView.findViewById(R.id.nav_header_title);
             TextView headerSubtitle = headerView.findViewById(R.id.nav_header_subtitle);
@@ -57,6 +63,9 @@ public class MainActivity extends AppCompatActivity
         } else {
             loginItem.setVisible(true);
             logoutItem.setVisible(false);
+            myMarketItem.setVisible(false);
+            myProductsItem.setVisible(false);
+            addProductItem.setVisible(false);
         }
 
         if (savedInstanceState == null) {
@@ -87,6 +96,12 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.nav_my_market:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyMarketFragment()).commit();
+                break;
+            case R.id.nav_my_products:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyProductsFragment()).commit();
+                break;
+            case R.id.nav_add_product:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddProductFragment()).commit();
                 break;
 
             case R.id.nav_logout:
