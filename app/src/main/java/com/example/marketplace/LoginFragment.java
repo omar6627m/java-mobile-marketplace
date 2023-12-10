@@ -64,6 +64,30 @@ public class LoginFragment extends Fragment {
 
             // Example: Check if username and password are not empty
             if (!username.isEmpty() && !password.isEmpty()) {
+                User retrievedUser = userDataSource.getUserByName(username);
+                if (retrievedUser != null) {
+                    // User found, check password
+                    if (retrievedUser.getPassword().equals(password)) {
+                        Log.d("Database", "User found: " + retrievedUser.getName());
+                        UserSingleton.getInstance().setCurrentUser(retrievedUser);
+                        textViewError.setVisibility(View.GONE);
+                        if (reloadListener != null) {
+                            reloadListener.onReload();
+                        }
+                        Toast.makeText(requireContext(), "Logged In!", Toast.LENGTH_SHORT).show();
+                        navigateToAnotherFragment();
+                    }else {
+                        // Display error message
+                        textViewError.setVisibility(View.VISIBLE);
+                        textViewError.setText("Incorrect Username or Password.");
+                    }
+                }else{
+                    // Display error message
+                    textViewError.setVisibility(View.VISIBLE);
+                    textViewError.setText("Incorrect Username or Password.");
+                }
+
+
                 if (username.equals("ramo") && password.equals("1234")){
                     // Successful login, hide error message
                     textViewError.setVisibility(View.GONE);
