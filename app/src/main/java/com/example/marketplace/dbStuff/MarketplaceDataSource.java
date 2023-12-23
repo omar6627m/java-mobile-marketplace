@@ -94,10 +94,12 @@ public class MarketplaceDataSource {
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 // Extract data from the cursor and create a Marketplace object
+                @SuppressLint("Range") long marketId = cursor.getLong(cursor.getColumnIndex(MarketplaceContract.COLUMN_ID));
                 @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(MarketplaceContract.COLUMN_NAME));
                 @SuppressLint("Range") String imageUrl = cursor.getString(cursor.getColumnIndex(MarketplaceContract.COLUMN_IMAGE_URL));
 
                 Marketplace marketplace = new Marketplace(name,imageUrl);
+                marketplace.setId(marketId);
 
                 // Add the Marketplace to the list
                 marketplaces.add(marketplace);

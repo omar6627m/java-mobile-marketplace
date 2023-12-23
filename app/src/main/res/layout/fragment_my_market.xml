@@ -35,23 +35,26 @@
         android:textColor="@color/blue"
         android:layout_centerHorizontal="true"/>
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewTitle"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/wave"
-        android:layout_centerHorizontal="true"/>
-
     <Button
         android:id="@+id/buttonSaveMarket"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
         android:layout_marginTop="16dp"
+        android:layout_below="@id/textViewTitle"
+
         android:background="@color/yellow"
         android:textColor="@color/white"
         android:layout_marginHorizontal="5dp"
         android:text="Save" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonSaveMarket"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/wave"
+        android:layout_centerHorizontal="true"/>
+
+
 </RelativeLayout>

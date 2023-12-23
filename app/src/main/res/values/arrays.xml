@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="category_array">
-        <item>Car</item>
+        <item>Cars</item>
         <item>Houses</item>
         <item>Laptops</item>
         <item>Phones</item>

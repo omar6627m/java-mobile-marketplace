@@ -23,6 +23,7 @@ public class MyMarketFragment extends Fragment {
     private EditText editTextImageUrl;
     private TextView textViewTitle;
     private ImageView imageView;
+    private Button saveMarketButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,15 +41,17 @@ public class MyMarketFragment extends Fragment {
         editTextName.setText(marketplace.getName());
         editTextImageUrl.setText(marketplace.getImageUrl());
 
-
-        loadImageFromUrl();
-        Button saveMarketButton = view.findViewById(R.id.buttonSaveMarket);
+        saveMarketButton = view.findViewById(R.id.buttonSaveMarket);
         saveMarketButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadImageFromUrl();
             }
         });
+
+        loadImageFromUrl();
+
+
 
         return view;
     }
@@ -63,6 +66,7 @@ public class MyMarketFragment extends Fragment {
             // Display the entered name as a title
             String enteredName = editTextName.getText().toString().trim();
             textViewTitle.setText(enteredName);
+            saveMarketButton.setVisibility(View.VISIBLE);
         } else {
             // Handle the case where the image URL is empty
             Toast.makeText(requireContext(), "Image URL is empty", Toast.LENGTH_SHORT).show();

@@ -88,6 +88,51 @@ public class ProductDataSource {
         return productList;
     }
 
-    // Additional methods for CRUD operations as needed
+    public List<Product> getProductsByCategory(String category_string) {
+        List<Product> productList = new ArrayList<>();
+
+        String[] projection = {
+                ProductContract.COLUMN_ID,
+                ProductContract.COLUMN_NAME,
+                ProductContract.COLUMN_IMAGE_URL,
+                ProductContract.COLUMN_CATEGORY,
+                ProductContract.COLUMN_PRICE
+        };
+
+        String selection = ProductContract.COLUMN_CATEGORY + " = ?";
+        String[] selectionArgs = {category_string};
+
+        Cursor cursor = database.query(
+                ProductContract.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                @SuppressLint("Range") long productId = cursor.getLong(cursor.getColumnIndex(ProductContract.COLUMN_ID));
+                @SuppressLint("Range") String productName = cursor.getString(cursor.getColumnIndex(ProductContract.COLUMN_NAME));
+                @SuppressLint("Range") String imageUrl = cursor.getString(cursor.getColumnIndex(ProductContract.COLUMN_IMAGE_URL));
+                @SuppressLint("Range") String category = cursor.getString(cursor.getColumnIndex(ProductContract.COLUMN_CATEGORY));
+                @SuppressLint("Range") double price = cursor.getDouble(cursor.getColumnIndex(ProductContract.COLUMN_PRICE));
+
+                Product product = new Product(productName,imageUrl,price);
+                product.setId(productId);
+                product.setCategory(category);
+
+                productList.add(product);
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        }
+
+        return productList;
+    }
+
+
 }
 
